@@ -17,7 +17,7 @@ Análise exploratória e teste de hipótese sobre acidentes e incidentes graves 
 
 **Peculiaridades tratadas:** cabeçalho extra na 1ª linha (`skiprows=1`), separador `;`, UTF-8 com BOM, ausentes escritos como `"null"`, coordenadas com vírgula decimal, 10 linhas 100% duplicadas e números de ocorrência repetidos.
 
-**Granularidade (descoberta na limpeza):** cada linha é **1 tipo de ocorrência × 1 aeronave × 1 ocorrência**. A maior parte das repetições de `Numero_da_Ocorrencia` vem de uma mesma aeronave classificada em vários tipos de ocorrência. Só 36 ocorrências têm mais de uma aeronave. Removemos apenas as duplicatas exatas e analisamos três visões: 5.011 linhas (tipos), **4.338 aeronave-ocorrências (unidade de análise)** e 4.301 ocorrências.
+**Granularidade (descoberta na limpeza):** cada linha é **1 tipo de ocorrência × 1 aeronave × 1 ocorrência**. A maior parte das repetições de `Numero_da_Ocorrencia` vem de uma mesma aeronave classificada em vários tipos de ocorrência. Só 36 ocorrências têm mais de uma aeronave. Removi apenas as duplicatas exatas e analisei três visões: 5.011 linhas (tipos), **4.338 aeronave-ocorrências (unidade de análise)** e 4.301 ocorrências.
 
 ## Perguntas
 
@@ -35,7 +35,7 @@ Análise exploratória e teste de hipótese sobre acidentes e incidentes graves 
 ## Teste de hipótese
 
 - **H₀:** a proporção de aeronave-ocorrências com ≥ 1 vítima fatal é igual entre Voo Privado e Operação Agrícola. **H₁:** as proporções são diferentes. α = 0,05.
-- Usamos a variável `teve_fatalidade`, construída a partir das colunas `Lesoes_Fatais_*`. **Ausente não foi tratado como zero:** linhas com desfecho desconhecido ficaram fora do teste (17,4% do Voo Privado e 25,9% da Operação Agrícola).
+- Usei a variável `teve_fatalidade`, construída a partir das colunas `Lesoes_Fatais_*`. **Ausente não foi tratado como zero:** linhas com desfecho desconhecido ficaram fora do teste (17,4% do Voo Privado e 25,9% da Operação Agrícola).
 
 | Grupo | Com fatalidade | Total | % |
 |---|---|---|---|
@@ -45,7 +45,7 @@ Análise exploratória e teste de hipótese sobre acidentes e incidentes graves 
 - Qui-quadrado de independência: χ² = 20,25, gl = 1, **valor-p = 6,8 × 10⁻⁶**. O teste z de duas proporções dá o mesmo resultado (z = 4,50).
 - Premissas: menor contagem esperada = 150,7 (≥ 5 ✔). Independência razoável, mas não perfeita: 15% das linhas são de aeronaves que aparecem em mais de uma ocorrência.
 - Tamanho do efeito: diferença de **+9,8 p.p. (IC 95%: +5,8 a +13,8)**, risco relativo 1,50, Cramér's V = 0,10 (efeito fraco).
-- **Interpretação:** rejeitamos H₀. A diferença é real e não fruto do acaso: proporcionalmente, as ocorrências do voo privado terminam com mortes com mais frequência que as da aviação agrícola. O resultado se mantém em todos os cenários de sensibilidade. Restrito a acidentes, a diferença sobe para 14,4 p.p.
+- **Interpretação:** rejeito H₀. A diferença é real e não fruto do acaso: proporcionalmente, as ocorrências do voo privado terminam com mortes com mais frequência que as da aviação agrícola. O resultado se mantém em todos os cenários de sensibilidade. Restrito a acidentes, a diferença sobe para 14,4 p.p.
 
 **Resultado inesperado:** a aviação agrícola, considerada de alto risco, tem **menos** fatalidade por ocorrência que o voo privado. Uma explicação plausível, ainda não testada, é que as aeronaves agrícolas levam uma única pessoa (mediana de 1 assento, contra 4 no voo privado).
 
