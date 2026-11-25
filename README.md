@@ -1,7 +1,7 @@
 # Investigando ocorrências aeronáuticas no Brasil com Python
 
-**Autor:** José Figueredo
-*(projeto do desafio "Investigue uma pergunta com Python" do bootcamp)*
+**Autor:** José Emanuel Figueredo Lopes Lacerda
+*(projeto do desafio "Investigue uma pergunta com Python" do Programa Trilhas 2026 - Trilha de Ciência de Dados)*
 
 Análise exploratória e teste de hipótese sobre acidentes e incidentes graves da aviação civil brasileira, feitos com Pandas, Matplotlib/Seaborn e SciPy.
 
