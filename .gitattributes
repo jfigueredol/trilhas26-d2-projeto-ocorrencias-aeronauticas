@@ -1,2 +1,0 @@
-# Base original: guardar byte a byte, sem converter finais de linha
-dados/*.csv -text
